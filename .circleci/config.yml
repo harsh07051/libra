@@ -9,7 +9,7 @@ commands:
           name: Version Information
           command: rustc --version; cargo --version; rustup --version
       - run:
-          name: Install Dependencies
+          
           command: |
             sudo sh -c 'echo "deb http://deb.debian.org/debian stretch-backports main" > /etc/apt/sources.list.d/backports.list'
             sudo apt-get update
@@ -50,12 +50,12 @@ jobs:
       - image: circleci/rust:stretch
     resource_class: xlarge
     steps:
-      - env_setup
+      
       - run:
           name: Cargo Audit
           command: |
             cargo install --force cargo-audit
-            cargo generate-lockfile
+            cargo generate-scheduled-workflow:
             cargo audit
 
 workflows:
